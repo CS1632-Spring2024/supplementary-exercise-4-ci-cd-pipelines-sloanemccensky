@@ -26,6 +26,10 @@ public class CatUnitTest {
 	@Before
 	public void setUp() throws Exception {
 		// INITIALIZE THE TEST FIXTURE
+		// c = new CatImpl(1, "Jennyanydots");
+		c = Cat.createInstance(InstanceType.IMPL, 1, "Jennyanydots"); // can change .MOCK to .SOLUTION to run it against
+		// provided solution code
+		// Cat.createinstance();
 
 		// Create a Cat with ID 1 and name "Jennyanydots", assign to c using a call to Cat.createInstance(InstanceType, int, String).
 		// Passing InstanceType.IMPL as the first parameter will create a real cat using your CatImpl implementation.
@@ -53,6 +57,8 @@ public class CatUnitTest {
 	@Test
 	public void testGetId() {
 		// TODO: Fill in
+		int retVal = c.getId();
+		assertEquals(1, retVal);
 	}
 
 	/**
@@ -61,12 +67,14 @@ public class CatUnitTest {
 	 * <pre>
 	 * Preconditions: c has been created with ID 1, and name "Jennyanydots".
 	 * Execution steps: Call c.getName().
-	 * Postconditions: Return value is "Jennyanydots".
+	 * Postconditions: Return value is 1.
 	 * </pre>
 	 */
 	@Test
 	public void testGetName() {
 		// TODO: Fill in
+		String name = c.getName();
+		assertEquals("Jennyanydots", name);
 	}
 
 	/**
@@ -81,6 +89,8 @@ public class CatUnitTest {
 	@Test
 	public void testGetRented() {
 		// TODO: Fill in
+		boolean retVal = c.getRented();
+		assertFalse(retVal);
 	}
 
 	/**
@@ -95,6 +105,8 @@ public class CatUnitTest {
 	@Test
 	public void testToString() {
 		// TODO: Fill in
+		String ret = c.toString();
+		assertEquals("ID 1. Jennyanydots", ret);
 	}
 
 	/**
@@ -110,6 +122,9 @@ public class CatUnitTest {
 	@Test
 	public void testRentCat() {
 		// TODO: Fill in
+		c.rentCat();
+		boolean ret = c.getRented();
+		assertTrue(ret);
 	}
 
 	/**
@@ -126,6 +141,9 @@ public class CatUnitTest {
 	@Test
 	public void testReturnCat() {
 		// TODO: Fill in
+		c.returnCat();
+		boolean ret = c.getRented();
+		assertFalse(ret);
 	}
 
 	/**
@@ -141,6 +159,11 @@ public class CatUnitTest {
 	@Test
 	public void testRenameCat() {
 		// TODO: Fill in
+		c.renameCat("Garfield");
+		String nameRet = c.getName();
+		String toStringRet = c.toString();
+		assertEquals("Garfield", nameRet);
+		assertEquals("ID 1. Garfield", toStringRet);
 	}
 
 }
