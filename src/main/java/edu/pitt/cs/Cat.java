@@ -3,6 +3,8 @@ package edu.pitt.cs;
 import org.mockito.Mockito;
 import static org.mockito.Mockito.*; 
 
+// in StepDefinitions.java -> run it against .SOLUTION instead of .impol
+
 public interface Cat {
 	public static Cat createInstance(InstanceType type, int id, String name) {
 		switch (type) {
@@ -14,7 +16,7 @@ public interface Cat {
 				return new CatSolution(id, name);
 			case MOCK:
 			    // TODO: Return a mock object that emulates the behavior of a real object.
-				return null;
+				return Mockito.mock(Cat.class);
 			default:
 				assert(false);
 				return null;
